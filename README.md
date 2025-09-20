@@ -1,134 +1,124 @@
-# TORANO - WordPress E-commerce Website
+# TORANO - WordPress Theme
 
 ## 📋 Mô tả dự án
-
-TORANO là website thương mại điện tử chuyên về thời trang nam, được phát triển bằng WordPress với theme tự thiết kế. Website mang phong cách yêu nước với banner đặc trưng "Bay tiếp Là cờ Hoà Bình".
+Theme WordPress tự phát triển cho thương hiệu thời trang nam TORANO với giao diện hiện đại và tính năng đầy đủ.
 
 ## 🚀 Tính năng chính
 
-### Theme Custom
-- **Theme tự phát triển**: "shop" theme với thiết kế responsive
-- **Banner yêu nước**: Thiết kế đặc trưng với màu sắc cờ Việt Nam
-- **8 Page Templates**: Home, Sản phẩm mới, Danh mục sale, Áo nam, Giỏ hàng, Hệ thống cửa hàng, Danh mục sản phẩm
-- **Custom Shortcode**: `[new_products]` để hiển thị sản phẩm mới
+### 🎨 Giao diện
+- **Responsive Design** - Tương thích mọi thiết bị
+- **Modern UI/UX** - Giao diện hiện đại, dễ sử dụng
+- **Bootstrap 5** - Framework CSS mạnh mẽ
+- **Custom CSS** - Thiết kế riêng biệt cho thương hiệu
 
-### Plugins sử dụng
-- **Advanced Custom Fields (ACF)**: Quản lý custom fields cho sản phẩm
-- **WooCommerce**: Hệ thống e-commerce hoàn chỉnh
-- **Akismet**: Bảo mật chống spam
+### 📄 Page Templates
+- **Home Page** - Trang chủ với slider và sản phẩm nổi bật
+- **Danh Mục Sản Phẩm** - Hiển thị các danh mục sản phẩm
+- **Sản Phẩm Mới** - Trang sản phẩm mới với ACF
+- **Áo Nam** - Trang chuyên về áo nam
+- **Danh Mục Sale** - Trang sản phẩm khuyến mãi
+- **Hệ Thống Cửa Hàng** - Thông tin cửa hàng
+- **Giỏ Hàng** - Trang giỏ hàng
 
-### Tính năng nâng cao
-- **Slider sản phẩm**: Sử dụng Swiper.js
-- **Newsletter**: Form đăng ký nhận tin
-- **Social Media Integration**: Facebook, Twitter, Instagram, YouTube
-- **Payment Methods**: VNPAY, ZaloPay, Moca, Kredivo, Napas, Visa
-- **Shipping Partners**: GHN, Ninja Van, Ahamove, J&T
+### ⚙️ Tính năng kỹ thuật
+- **ACF Integration** - Custom fields cho sản phẩm
+- **Shortcode Support** - `[new_products]` shortcode
+- **Swiper.js** - Slider/carousel hiện đại
+- **Newsletter Form** - Form đăng ký nhận tin
+- **SEO Optimized** - Tối ưu SEO
 
-## 🛠️ Công nghệ sử dụng
-
-- **WordPress**: 6.4+
-- **PHP**: 7.4+
-- **Bootstrap**: 5.3.3
-- **JavaScript**: Vanilla JS + jQuery
-- **CSS**: Custom CSS với responsive design
-- **Database**: MySQL
-
-## 📁 Cấu trúc dự án
-
-```
-project_wp/
-├── wp-content/
-│   ├── themes/
-│   │   └── shop/                 # Custom theme
-│   │       ├── assets/           # CSS, JS, images
-│   │       ├── templates/        # Page templates
-│   │       ├── functions.php     # Theme functions
-│   │       ├── style.css         # Main stylesheet
-│   │       ├── header.php        # Header template
-│   │       ├── footer.php        # Footer template
-│   │       └── *.php             # Page templates
-│   └── plugins/
-│       ├── advanced-custom-fields/
-│       ├── woocommerce/
-│       └── akismet/
-├── wp-config.php                 # WordPress configuration
-└── README.md                     # Project documentation
-```
-
-## 🎨 Thiết kế
-
-### Màu sắc chủ đạo
-- **Đỏ**: #dc2626 (Màu cờ Việt Nam)
-- **Xanh dương**: #2563eb
-- **Xanh lá**: #16a34a
-- **Xám đậm**: #2d3748
-
-### Typography
-- **Font chính**: Inter (Google Fonts)
-- **Font size**: Responsive từ 13px đến 48px
-
-## 🚀 Cài đặt
+## 🛠️ Cài đặt
 
 ### Yêu cầu hệ thống
-- PHP 7.4 hoặc cao hơn
-- MySQL 5.5.5 hoặc cao hơn
-- Apache/Nginx web server
-- WordPress 6.4+
+- WordPress 5.0+
+- PHP 7.4+
+- MySQL 5.6+
 
-### Hướng dẫn cài đặt
+### Cài đặt theme
+1. Upload thư mục `shop` vào `/wp-content/themes/`
+2. Kích hoạt theme trong WordPress Admin
+3. Cài đặt plugin ACF (Advanced Custom Fields)
+4. Import dữ liệu mẫu (nếu có)
 
-1. **Clone repository**
-```bash
-git clone https://github.com/Badoandz/UDPM-BaDoan.git
-cd UDPM-BaDoan
+### Cấu hình
+1. **Menu**: Vào Appearance > Menus để cấu hình menu
+2. **ACF**: Tạo field group "new-product" cho sản phẩm mới
+3. **Pages**: Tạo các trang và chọn template tương ứng
+
+## 📁 Cấu trúc thư mục
+
+```
+wp-content/themes/shop/
+├── assets/
+│   ├── images/          # Hình ảnh
+│   ├── torano.css       # CSS chính
+│   └── torano.js        # JavaScript
+├── templates/           # Template parts
+├── *.php               # Page templates
+├── functions.php       # Functions chính
+├── style.css          # Style chính
+└── README.md          # Tài liệu
 ```
 
-2. **Cấu hình database**
-- Tạo database MySQL
-- Import file SQL (nếu có)
-- Cập nhật thông tin database trong `wp-config.php`
+## 🎯 Sử dụng
 
-3. **Cài đặt WordPress**
-- Upload files lên web server
-- Truy cập website và làm theo hướng dẫn cài đặt WordPress
+### Shortcode
+```php
+[new_products] // Hiển thị sản phẩm mới từ ACF
+```
 
-4. **Kích hoạt theme và plugins**
-- Vào Admin Dashboard → Appearance → Themes
-- Kích hoạt theme "shop"
-- Vào Plugins và kích hoạt các plugin cần thiết
+### Custom Fields
+- **new-product**: Field group cho sản phẩm mới
+  - `image-new-product`: Hình ảnh sản phẩm
+  - `name-new-product`: Tên sản phẩm
+  - `price-new-product`: Giá sản phẩm
 
-## 📱 Responsive Design
+## 🔧 Tùy chỉnh
 
-Website được thiết kế responsive hoàn toàn, tương thích với:
-- **Desktop**: 1200px+
-- **Tablet**: 768px - 1199px
-- **Mobile**: 320px - 767px
+### CSS Variables
+```css
+:root {
+    --tn-black: #111;
+    --tn-white: #fff;
+    --tn-gray: #666;
+    --tn-border: #eee;
+    --tn-red: #e11d48;
+}
+```
 
-## 🔧 Customization
+### JavaScript
+- Swiper.js cho slider
+- Custom scripts trong `torano.js`
+- Banner script trong `banner-script.js`
 
-### Thêm sản phẩm mới
-1. Vào Admin Dashboard → Custom Fields → Field Groups
-2. Chỉnh sửa group "new-product"
-3. Thêm sản phẩm mới với các field: image, name, price
+## 📱 Responsive Breakpoints
+- Mobile: < 576px
+- Tablet: 576px - 768px
+- Desktop: 768px - 1200px
+- Large: > 1200px
 
-### Tùy chỉnh banner
-- Chỉnh sửa file `front-page.php`
-- Cập nhật CSS trong `assets/torano.css`
+## 🚀 Deployment
 
-## 📞 Thông tin liên hệ
+### GitHub
+- Repository: [GitHub Link]
+- Branch: main
+- Auto-deploy: Có thể setup với GitHub Actions
 
-- **Địa chỉ**: Tầng 8, tòa nhà Ford, số 313 Trường Chinh, quận Thanh Xuân, Hà Nội
-- **Điện thoại**: 0964942121
-- **Email**: cskh@torano.vn
+### Server Requirements
+- PHP 7.4+
+- MySQL 5.6+
+- Apache/Nginx
+- SSL Certificate (khuyến nghị)
 
 ## 📄 License
-
-Dự án này được phát triển cho mục đích học tập và nghiên cứu.
+MIT License - Sử dụng tự do cho mục đích học tập và thương mại.
 
 ## 👨‍💻 Tác giả
+**Badoan** - Sinh viên UDPM
 
-**Badoandz** - Sinh viên UDPM
+## 📞 Liên hệ
+- Email: [your-email]
+- GitHub: [your-github]
 
 ---
-
-*Website được phát triển với tinh thần yêu nước và hướng tới phong cách nam tính, lịch lãm và trẻ trung.*
+*Được phát triển với ❤️ cho dự án UDPM*
