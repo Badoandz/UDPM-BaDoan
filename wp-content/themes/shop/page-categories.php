@@ -29,7 +29,7 @@ get_header(); ?>
             <!-- Polo Card -->
             <div class="category-card">
                 <div class="category-image">
-                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=400&auto=format&fit=crop" alt="Áo Polo">
+                    <img src="https://bulbal.vn/wp-content/uploads/2022/02/AO-POLO-THE-THAO-NAM-BULBAL-MODERN-II-TRANG-1-scaled.jpg" alt="Áo Polo">
                     <div class="category-overlay">
                         <h3 class="category-name">Áo Polo</h3>
                         <button class="category-arrow-btn">
@@ -44,7 +44,7 @@ get_header(); ?>
             <!-- T-shirt Card -->
             <div class="category-card">
                 <div class="category-image">
-                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=400&auto=format&fit=crop" alt="Áo Thun">
+                    <img src="https://cf.shopee.vn/file/7e767303ceaa695d06e6038c5ff58499" alt="Áo Thun">
                     <div class="category-overlay">
                         <h3 class="category-name">Áo Thun</h3>
                         <button class="category-arrow-btn">
@@ -59,7 +59,7 @@ get_header(); ?>
             <!-- Jeans Card -->
             <div class="category-card">
                 <div class="category-image">
-                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=400&auto=format&fit=crop" alt="Quần Jeans">
+                    <img src="https://vulcano.sgp1.digitaloceanspaces.com/media/18550/quan-jean-3008a-vulcano01.webp" alt="Quần Jeans">
                     <div class="category-overlay">
                         <h3 class="category-name">Quần Jeans</h3>
                         <button class="category-arrow-btn">
@@ -74,9 +74,54 @@ get_header(); ?>
             <!-- Dress Pants Card -->
             <div class="category-card">
                 <div class="category-image">
-                    <img src="https://images.unsplash.com/photo-1594938298603-c8148c4dae35?q=80&w=400&auto=format&fit=crop" alt="Quần Âu">
+                    <img src="https://salt.tikicdn.com/cache/w1200/ts/product/5c/77/9c/e864ba1172323c430a7610ede3e192bf.jpg" alt="Quần Âu">
                     <div class="category-overlay">
                         <h3 class="category-name">Quần Âu</h3>
+                        <button class="category-arrow-btn">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="9,18 15,12 9,6"></polyline>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Áo Sơ Mi Card -->
+            <div class="category-card">
+                <div class="category-image">
+                    <img src="https://images.unsplash.com/photo-1596755094514-f87e34085b2c?q=80&w=400&auto=format&fit=crop" alt="Áo Sơ Mi">
+                    <div class="category-overlay">
+                        <h3 class="category-name">Áo Sơ Mi</h3>
+                        <button class="category-arrow-btn">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="9,18 15,12 9,6"></polyline>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Áo Khoác Card -->
+            <div class="category-card">
+                <div class="category-image">
+                    <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?q=80&w=400&auto=format&fit=crop" alt="Áo Khoác">
+                    <div class="category-overlay">
+                        <h3 class="category-name">Áo Khoác</h3>
+                        <button class="category-arrow-btn">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="9,18 15,12 9,6"></polyline>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Phụ Kiện Card -->
+            <div class="category-card">
+                <div class="category-image">
+                    <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=400&auto=format&fit=crop" alt="Phụ Kiện">
+                    <div class="category-overlay">
+                        <h3 class="category-name">Phụ Kiện</h3>
                         <button class="category-arrow-btn">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <polyline points="9,18 15,12 9,6"></polyline>

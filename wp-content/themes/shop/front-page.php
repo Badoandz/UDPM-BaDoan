@@ -66,20 +66,18 @@ get_header();
     <div class="swiper category-slider">
         <div class="swiper-wrapper">
             <?php
-            $args = array(
-                'taxonomy'   => 'product_cat',
-                'hide_empty' => false,
-                'parent'     => 0
-            );
-            $product_categories = get_terms($args);
+            // Luôn hiển thị danh mục mẫu
+            $show_sample_categories = true;
             
-            // Nếu không có danh mục, hiển thị danh mục mẫu
-            if (empty($product_categories) || is_wp_error($product_categories)) {
+            if ($show_sample_categories) {
                 $sample_categories = array(
-                    array('name' => 'Áo Polo', 'image' => 'https://images.unsplash.com/photo-1542060748-10c28b62716d?q=80&w=1600&auto=format&fit=crop'),
-                    array('name' => 'Áo Thun', 'image' => 'https://images.unsplash.com/photo-1603252109303-2751441dd157?q=80&w=1600&auto=format&fit=crop'),
-                    array('name' => 'Quần Jeans', 'image' => 'https://images.unsplash.com/photo-1514311548104-ae305aac4688?q=80&w=1600&auto=format&fit=crop'),
-                    array('name' => 'Quần Âu', 'image' => 'https://images.unsplash.com/photo-1620799139533-3f7b2a9a8121?q=80&w=1600&auto=format&fit=crop')
+                    array('name' => 'Áo Polo', 'image' => 'https://bulbal.vn/wp-content/uploads/2022/02/AO-POLO-THE-THAO-NAM-BULBAL-MODERN-II-TRANG-1-scaled.jpg'),
+                    array('name' => 'Áo Thun', 'image' => 'https://cf.shopee.vn/file/7e767303ceaa695d06e6038c5ff58499'),
+                    array('name' => 'Quần Jeans', 'image' => 'https://vulcano.sgp1.digitaloceanspaces.com/media/18550/quan-jean-3008a-vulcano01.webp'),
+                    array('name' => 'Quần Âu', 'image' => 'https://salt.tikicdn.com/cache/w1200/ts/product/5c/77/9c/e864ba1172323c430a7610ede3e192bf.jpg'),
+                    array('name' => 'Áo Sơ Mi', 'image' => 'https://images.unsplash.com/photo-1596755094514-f87e34085b2c?q=80&w=1600&auto=format&fit=crop'),
+                    array('name' => 'Áo Khoác', 'image' => 'https://images.unsplash.com/photo-1551028719-00167b16eac5?q=80&w=1600&auto=format&fit=crop'),
+                    array('name' => 'Phụ Kiện', 'image' => 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=1600&auto=format&fit=crop')
                 );
                 
                 foreach ($sample_categories as $category) {
@@ -90,29 +88,6 @@ get_header();
                             <img src="<?php echo $category['image']; ?>" alt="<?php echo $category['name']; ?>">
                             <div class="category-info">
                                 <h4><?php echo $category['name']; ?></h4>
-                                <span class="arrow">→</span>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            <?php 
-                }
-            } else {
-                foreach ($product_categories as $category) {
-                    $thumbnail_id = get_term_meta($category->term_id, 'thumbnail_id', true);
-                    $image = wp_get_attachment_url($thumbnail_id);
-                    
-                    // Ảnh mặc định nếu không có
-                    if (!$image) {
-                        $image = 'https://images.unsplash.com/photo-1542060748-10c28b62716d?q=80&w=1600&auto=format&fit=crop';
-                    }
-            ?>
-                <div class="swiper-slide">
-                    <div class="category-card">
-                        <a href="<?php echo get_term_link($category); ?>">
-                            <img src="<?php echo $image; ?>" alt="<?php echo $category->name; ?>">
-                            <div class="category-info">
-                                <h4><?php echo $category->name; ?></h4>
                                 <span class="arrow">→</span>
                             </div>
                         </a>
@@ -163,17 +138,17 @@ get_header();
         <div class="promo-product-card">
             <div class="promo-discount-badge">-34%</div>
             <div class="promo-product-image">
-                <img src="https://images.unsplash.com/photo-1586790170083-2f9ceadc732d?q=80&w=400&auto=format&fit=crop" alt="Áo polo monogram">
+                <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?q=80&w=400&auto=format&fit=crop" alt="Áo khoác gió">
             </div>
             <div class="promo-product-details">
                 <div class="promo-variants">
-                    <span class="color-variants">+2 Màu sắc</span>
-                    <span class="size-variants">+4 Kích thước</span>
+                    <span class="color-variants">+8 Màu sắc</span>
+                    <span class="size-variants">+5 Kích thước</span>
                 </div>
-                <h3 class="promo-product-name">Áo polo monogram in tràn họa tiết GSTP051</h3>
+                <h3 class="promo-product-name">Áo khoác gió 2 lớp mũ tháo rời EWCW001</h3>
                 <div class="promo-prices">
-                    <span class="promo-current-price">299,000₫</span>
-                    <span class="promo-original-price">450,000₫</span>
+                    <span class="promo-current-price">399,000₫</span>
+                    <span class="promo-original-price">600,000₫</span>
                 </div>
             </div>
         </div>
@@ -181,7 +156,7 @@ get_header();
         <div class="promo-product-card">
             <div class="promo-discount-badge">-34%</div>
             <div class="promo-product-image">
-                <img src="https://images.unsplash.com/photo-1571945153237-4929e783af4a?q=80&w=400&auto=format&fit=crop" alt="Áo Polo trơn">
+                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=400&auto=format&fit=crop" alt="Áo Polo trơn">
             </div>
             <div class="promo-product-details">
                 <div class="promo-variants">
@@ -199,7 +174,7 @@ get_header();
         <div class="promo-product-card">
             <div class="promo-discount-badge">-29%</div>
             <div class="promo-product-image">
-                <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=400&auto=format&fit=crop" alt="Áo T shirt thể thao">
+                <img src="https://images.unsplash.com/photo-1603252109303-2751441dd157?q=80&w=400&auto=format&fit=crop" alt="Áo T shirt thể thao">
             </div>
             <div class="promo-product-details">
                 <div class="promo-variants">
@@ -217,7 +192,7 @@ get_header();
         <div class="promo-product-card">
             <div class="promo-discount-badge">-29%</div>
             <div class="promo-product-image">
-                <img src="https://images.unsplash.com/photo-1503341504253-dff4815485f1?q=80&w=400&auto=format&fit=crop" alt="Áo T shirt thể thao">
+                <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=400&auto=format&fit=crop" alt="Áo T shirt thể thao">
             </div>
             <div class="promo-product-details">
                 <div class="promo-variants">
@@ -235,7 +210,7 @@ get_header();
         <div class="promo-product-card">
             <div class="promo-discount-badge">-20%</div>
             <div class="promo-product-image">
-                <img src="https://images.unsplash.com/photo-1542272604-787c3835535d?q=80&w=400&auto=format&fit=crop" alt="Quần Jeans">
+                <img src="https://images.unsplash.com/photo-1514311548104-ae305aac4688?q=80&w=400&auto=format&fit=crop" alt="Quần Jeans">
             </div>
             <div class="promo-product-details">
                 <div class="promo-variants">
@@ -253,7 +228,7 @@ get_header();
         <div class="promo-product-card">
             <div class="promo-discount-badge">-20%</div>
             <div class="promo-product-image">
-                <img src="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?q=80&w=400&auto=format&fit=crop" alt="Quần âu">
+                <img src="https://images.unsplash.com/photo-1594938298603-c8148c4dae35?q=80&w=400&auto=format&fit=crop" alt="Quần âu">
             </div>
             <div class="promo-product-details">
                 <div class="promo-variants">
@@ -776,91 +751,6 @@ get_header();
         </div>
     </div>
     
-    <!-- Main Footer Content -->
-    <div class="footer-main">
-        <div class="tn-container">
-            <div class="footer-grid">
-                <!-- Column 1: Company Info -->
-                <div class="footer-column">
-                    <h3 class="footer-title">Thời trang nam TORANO</h3>
-                    <p class="footer-description">Hệ thống thời trang cho phái mạnh hàng đầu Việt Nam, hướng tới phong cách nam tính, lịch lãm và trẻ trung.</p>
-                    
-                    <div class="social-media">
-                        <a href="#" class="social-icon facebook">f</a>
-                        <a href="#" class="social-icon twitter">🐦</a>
-                        <a href="#" class="social-icon instagram">📷</a>
-                        <a href="#" class="social-icon tiktok">🎵</a>
-                        <a href="#" class="social-icon youtube">▶</a>
-                    </div>
-                    
-                    <div class="payment-methods">
-                        <h4>Phương thức thanh toán</h4>
-                        <div class="payment-logos">
-                            <span class="payment-logo">VNPAY</span>
-                            <span class="payment-logo">ZaloPay</span>
-                            <span class="payment-logo">Moca</span>
-                            <span class="payment-logo">Kredivo</span>
-                            <span class="payment-logo">Napas</span>
-                            <span class="payment-logo">Visa</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Column 2: Contact Info -->
-                <div class="footer-column">
-                    <h3 class="footer-title">Thông tin liên hệ</h3>
-                    <div class="contact-info">
-                        <p><strong>Địa chỉ:</strong> Tầng 8, tòa nhà Ford, số 313 Trường Chinh, quận Thanh Xuân, Hà Nội</p>
-                        <p><strong>Điện thoại:</strong> 0964942121</p>
-                        <p><strong>Fax:</strong> 0904636356</p>
-                        <p><strong>Email:</strong> cskh@torano.vn</p>
-                    </div>
-                    
-                    <div class="shipping-methods">
-                        <h4>Phương thức vận chuyển</h4>
-                        <div class="shipping-logos">
-                            <span class="shipping-logo">GHN</span>
-                            <span class="shipping-logo">Ninja Van</span>
-                            <span class="shipping-logo">Ahamove</span>
-                            <span class="shipping-logo">J&T</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Column 3: Links -->
-                <div class="footer-column">
-                    <h3 class="footer-title">Nhóm liên kết</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">Tìm kiếm</a></li>
-                        <li><a href="#">Giới thiệu</a></li>
-                        <li><a href="#">Chính sách đổi trả</a></li>
-                        <li><a href="#">Chính sách bảo mật</a></li>
-                        <li><a href="#">Tuyển dụng</a></li>
-                        <li><a href="#">Liên hệ</a></li>
-                    </ul>
-                </div>
-                
-                <!-- Column 4: Newsletter -->
-                <div class="footer-column">
-                    <h3 class="footer-title">Đăng ký nhận tin</h3>
-                    <p class="newsletter-description">Để cập nhật những sản phẩm mới, nhận thông tin ưu đãi đặc biệt và thông tin giảm giá khác.</p>
-                    
-                    <form class="newsletter-form">
-                        <div class="newsletter-input">
-                            <input type="email" placeholder="Nhập email của bạn" required>
-                            <button type="submit">ĐĂNG KÝ</button>
-                        </div>
-                    </form>
-                    
-                    <div class="government-badge">
-                        <div class="badge-icon">✓</div>
-                        <span>ĐÃ THÔNG BÁO BỘ CÔNG THƯƠNG</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</footer>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
