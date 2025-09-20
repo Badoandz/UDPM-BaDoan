@@ -11,6 +11,169 @@
     add_action("after_setup_theme", "mytheme_setup");
 
 
+    // Custom Post Type: Sản phẩm
+    function create_product_post_type() {
+        $labels = array(
+            'name' => 'Sản phẩm',
+            'singular_name' => 'Sản phẩm',
+            'menu_name' => 'Sản phẩm',
+            'add_new' => 'Thêm sản phẩm mới',
+            'add_new_item' => 'Thêm sản phẩm mới',
+            'edit_item' => 'Chỉnh sửa sản phẩm',
+            'new_item' => 'Sản phẩm mới',
+            'view_item' => 'Xem sản phẩm',
+            'search_items' => 'Tìm kiếm sản phẩm',
+            'not_found' => 'Không tìm thấy sản phẩm',
+            'not_found_in_trash' => 'Không tìm thấy sản phẩm trong thùng rác'
+        );
+
+        $args = array(
+            'labels' => $labels,
+            'public' => true,
+            'publicly_queryable' => true,
+            'show_ui' => true,
+            'show_in_menu' => true,
+            'query_var' => true,
+            'rewrite' => array('slug' => 'san-pham'),
+            'capability_type' => 'post',
+            'has_archive' => true,
+            'hierarchical' => false,
+            'menu_position' => 5,
+            'menu_icon' => 'dashicons-products',
+            'supports' => array('title', 'editor', 'thumbnail', 'excerpt', 'custom-fields'),
+            'show_in_rest' => true
+        );
+
+        register_post_type('product', $args);
+    }
+    add_action('init', 'create_product_post_type');
+
+
+    // Custom Taxonomy: Danh mục sản phẩm
+    function create_product_category_taxonomy() {
+        $labels = array(
+            'name' => 'Danh mục sản phẩm',
+            'singular_name' => 'Danh mục sản phẩm',
+            'search_items' => 'Tìm kiếm danh mục',
+            'all_items' => 'Tất cả danh mục',
+            'parent_item' => 'Danh mục cha',
+            'parent_item_colon' => 'Danh mục cha:',
+            'edit_item' => 'Chỉnh sửa danh mục',
+            'update_item' => 'Cập nhật danh mục',
+            'add_new_item' => 'Thêm danh mục mới',
+            'new_item_name' => 'Tên danh mục mới',
+            'menu_name' => 'Danh mục sản phẩm'
+        );
+
+        $args = array(
+            'hierarchical' => true,
+            'labels' => $labels,
+            'show_ui' => true,
+            'show_admin_column' => true,
+            'query_var' => true,
+            'rewrite' => array('slug' => 'danh-muc-san-pham'),
+            'show_in_rest' => true
+        );
+
+        register_taxonomy('product_category', array('product'), $args);
+    }
+    add_action('init', 'create_product_category_taxonomy');
+
+
+    // Customizer: Đổi logo
+    function mytheme_customize_register($wp_customize) {
+        // Logo Section
+        $wp_customize->add_section('mytheme_logo', array(
+            'title' => 'Logo & Branding',
+            'priority' => 30,
+        ));
+
+        // Logo Upload
+        $wp_customize->add_setting('mytheme_logo', array(
+            'default' => '',
+            'sanitize_callback' => 'esc_url_raw',
+        ));
+
+        $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'mytheme_logo', array(
+            'label' => 'Upload Logo',
+            'section' => 'mytheme_logo',
+            'settings' => 'mytheme_logo',
+        )));
+
+        // Site Title Color
+        $wp_customize->add_setting('mytheme_title_color', array(
+            'default' => '#111',
+            'sanitize_callback' => 'sanitize_hex_color',
+        ));
+
+        $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, 'mytheme_title_color', array(
+            'label' => 'Site Title Color',
+            'section' => 'mytheme_logo',
+            'settings' => 'mytheme_title_color',
+        )));
+    }
+    add_action('customize_register', 'mytheme_customize_register');
+
+
+    // Gallery Shortcode
+    function mytheme_gallery_shortcode($atts) {
+        $atts = shortcode_atts(array(
+            'ids' => '',
+            'columns' => '3',
+            'size' => 'medium'
+        ), $atts);
+
+        if (empty($atts['ids'])) {
+            return '';
+        }
+
+        $ids = explode(',', $atts['ids']);
+        $columns = intval($atts['columns']);
+        $size = $atts['size'];
+
+        $output = '<div class="mytheme-gallery gallery-columns-' . $columns . '">';
+        
+        foreach ($ids as $id) {
+            $image = wp_get_attachment_image($id, $size);
+            if ($image) {
+                $output .= '<div class="gallery-item">' . $image . '</div>';
+            }
+        }
+        
+        $output .= '</div>';
+        
+        return $output;
+    }
+    add_shortcode('mytheme_gallery', 'mytheme_gallery_shortcode');
+
+
+    // Rating System
+    function mytheme_rating_shortcode($atts) {
+        $atts = shortcode_atts(array(
+            'rating' => '5',
+            'max' => '5',
+            'readonly' => 'false'
+        ), $atts);
+
+        $rating = floatval($atts['rating']);
+        $max = intval($atts['max']);
+        $readonly = $atts['readonly'] === 'true';
+
+        $output = '<div class="mytheme-rating" data-rating="' . $rating . '" data-max="' . $max . '">';
+        
+        for ($i = 1; $i <= $max; $i++) {
+            $class = $i <= $rating ? 'star-filled' : 'star-empty';
+            $output .= '<span class="star ' . $class . '" data-value="' . $i . '">★</span>';
+        }
+        
+        $output .= '<span class="rating-text">(' . $rating . '/' . $max . ')</span>';
+        $output .= '</div>';
+        
+        return $output;
+    }
+    add_shortcode('mytheme_rating', 'mytheme_rating_shortcode');
+
+
     // Load CSS & JS
     function mytheme_enqueue_assets() {
         $theme_dir  = get_template_directory_uri();
